@@ -24,11 +24,12 @@ def predict(input_data: InputText):
     # total = sum(raw_scores)
     # probs = [round(score / total, 4) for score in raw_scores]
     output = get_prediction(input_data.text)
-    return output
+    scores = output[0]
+    print("Output:", output)
 
-    # sentiment_scores = dict(zip(labels, probs))
+    sentiment_scores = dict(zip(labels, scores))
 
-    # return PredictionResponse(
-    #     input_text=input_data.text,
-    #     sentiment_score=sentiment_scores,
-    # )
+    return PredictionResponse(
+        input_text=input_data.text,
+        sentiment_score=sentiment_scores,
+    )
